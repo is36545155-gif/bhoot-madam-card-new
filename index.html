@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bhoot Madam! 🎂✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        
+        .font-handwriting {
+            font-family: 'Dancing Script', cursive;
+        }
+        .font-sans {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-container.open .card-inner {
+            transform: rotateY(-180deg);
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.4)); }
+            50% { filter: drop-shadow(0 0 25px rgba(236, 72, 153, 0.8)); }
+        }
+
+        .glow {
+            animation: pulse-glow 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 min-h-screen flex flex-col items-center justify-center p-4 overflow-x-hidden font-sans text-slate-100">
+
+    <!-- Ambient Floating Stars Background -->
+    <div class="fixed inset-0 pointer-events-none opacity-40">
+        <div class="absolute top-10 left-10 text-pink-400 text-xl floating" style="animation-delay: 0s;">✨</div>
+        <div class="absolute top-1/4 right-16 text-purple-400 text-2xl floating" style="animation-delay: 1s;">👻</div>
+        <div class="absolute bottom-20 left-20 text-rose-400 text-xl floating" style="animation-delay: 2s;">👑</div>
+        <div class="absolute bottom-12 right-12 text-pink-300 text-2xl floating" style="animation-delay: 1.5s;">✨</div>
+        <div class="absolute top-1/3 left-1/2 text-purple-300 text-lg floating" style="animation-delay: 2.5s;">🎂</div>
+    </div>
+
+    <!-- Main Card Shell -->
+    <div class="w-full max-w-md h-[580px] card-container cursor-pointer relative z-10" id="card" onclick="toggleCard()">
+        <div class="card-inner w-full h-full relative duration-700">
+            
+            <!-- FRONT OF THE CARD -->
+            <div class="card-front absolute inset-0 w-full h-full bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 border-2 border-pink-500/30 rounded-3xl p-8 flex flex-col items-center justify-between shadow-2xl shadow-pink-950/50 glow">
+                <div class="w-full flex justify-between items-center text-xs tracking-widest text-pink-400 uppercase font-semibold">
+                    <span>Special Delivery</span>
+                    <span>For Bhoot Madam ✨</span>
+                </div>
+
+                <div class="text-center my-auto flex flex-col items-center">
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-pink-500/30 relative">
+                        <span class="text-5xl">👑</span>
+                        <span class="absolute -bottom-2 -right-2 text-2xl">👻</span>
+                    </div>
+                    
+                    <h1 class="text-4xl font-bold bg-gradient-to-r from-pink-400 via-purple-300 to-rose-400 bg-clip-text text-transparent font-handwriting tracking-wide">
+                        Happy Birthday!
+                    </h1>
+                    <p class="text-lg text-slate-300 mt-2 font-medium">To My Favorite "Bhoot Madam"</p>
+                    <p class="text-xs text-pink-400/80 mt-1">(Rani / Hina)</p>
+                </div>
+
+                <div class="w-full text-center py-3 bg-pink-500/10 border border-pink-500/20 rounded-xl text-pink-300 text-sm font-medium hover:bg-pink-500/20 transition-all flex items-center justify-center gap-2">
+                    <span>Click to open your card</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
+            </div>
+
+            <!-- INSIDE / BACK OF THE CARD -->
+            <div class="card-back absolute inset-0 w-full h-full bg-slate-900 border-2 border-purple-500/40 rounded-3xl p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-xs text-pink-400 font-semibold tracking-wider">BIRTHDAY SPECIAL 🎂</span>
+                    <span class="text-xs text-slate-400">Tap anywhere to flip back</span>
+                </div>
+
+                <!-- Song & Message Content -->
+                <div class="my-auto space-y-4 text-slate-200 text-sm leading-relaxed font-normal">
+                    <p class="text-pink-300 font-medium">Raton ko online aati ho,<br>
+                    Bas <span class="text-pink-400 font-semibold">"Bolo"</span> keh kar chup ho jati ho!</p>
+
+                    <p class="text-slate-300">Tanha rehna pasand hai tumhe, ye hum bhi jante hain,<br>
+                    Magar is bheed mein tumhe hi sab se khaas mante hain ✨</p>
+
+                    <p class="text-purple-300">Dimaag ka pulaou banana koi tumse seekhe,<br>
+                    Par sach kahoon toh... tum jaisa koi na dikhe!</p>
+
+                    <p class="text-slate-300">Naam Rani ho ya Hina, mere liye woh ehsaas ho,<br>
+                    <span class="text-pink-400 font-semibold">Bhoot Madam</span> ho tum, jo mere liye sab se khas ho ❤️</p>
+
+                    <div class="p-3 bg-pink-950/40 border border-pink-500/30 rounded-xl text-center text-pink-200 text-xs italic font-medium">
+                        "Baqi sab toh theek hai, par aaj ke din...<br>
+                        Cake ka pehla piece toh mere liye banta hai na? 🎂😜"
+                    </div>
+                </div>
+
+                <!-- Footer Wish -->
+                <div class="pt-3 border-t border-slate-800 text-center">
+                    <p class="text-xl font-handwriting text-pink-400 font-bold">Have an amazing day! 🎉🌹</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script to Handle Flip Effect -->
+    <script>
+        function toggleCard() {
+            const card = document.getElementById('card');
+            card.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
